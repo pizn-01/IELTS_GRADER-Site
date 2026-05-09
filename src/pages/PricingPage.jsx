@@ -60,15 +60,15 @@ const PricingPage = () => {
     <div className="min-h-screen bg-[#EFF6FF]">
       <Navbar />
       
-      <main className="max-w-[1200px] mx-auto px-[60px] py-[80px]">
+      <main className="max-w-[1200px] mx-auto px-6 py-12 md:px-[60px] md:py-[80px]">
         {/* Tab Switcher */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-white p-1 rounded-full border border-[#E5E7EB] flex items-center shadow-sm">
+        <div className="flex justify-center mb-8 md:mb-12">
+          <div className="bg-white p-1 rounded-full border border-[#E5E7EB] flex items-center shadow-sm w-full max-w-sm md:w-auto">
             {['Academic', 'General Training'].map(type => (
               <button
                 key={type}
                 onClick={() => setTrainingType(type)}
-                className={`px-8 py-2.5 rounded-full text-[14px] font-bold transition-all ${
+                className={`flex-1 md:flex-none px-4 md:px-8 py-2 md:py-2.5 rounded-full text-[13px] md:text-[14px] font-bold transition-all ${
                   trainingType === type 
                     ? 'bg-[#1a1f36] text-white' 
                     : 'text-[#6B7280] hover:text-[#1a1f36]'
@@ -80,21 +80,21 @@ const PricingPage = () => {
           </div>
         </div>
 
-        <div className="text-center mb-16">
-          <h1 className="text-[32px] font-extrabold text-[#1a1f36] mb-4">Choose Your Path to Success</h1>
-          <p className="text-[16px] text-[#6B7280]">Select the plan that fits your IELTS preparation goals.</p>
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-[28px] md:text-[32px] font-extrabold text-[#1a1f36] mb-3 md:mb-4">Choose Your Path to Success</h1>
+          <p className="text-[14px] md:text-[16px] text-[#6B7280]">Select the plan that fits your IELTS preparation goals.</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-[1100px] mx-auto">
           {plans.map((plan, i) => (
             <div 
               key={i} 
-              className={`bg-white rounded-[16px] p-8 border-2 transition-all hover:shadow-xl flex flex-col ${
-                plan.highlight ? 'border-[#3B82F6] relative shadow-lg scale-105 z-10' : 'border-[#E5E7EB]'
+              className={`bg-white rounded-[16px] p-6 md:p-8 border-2 transition-all hover:shadow-xl flex flex-col ${
+                plan.highlight ? 'border-[#3B82F6] relative shadow-lg md:scale-105 z-10 mt-4 md:mt-0' : 'border-[#E5E7EB]'
               }`}
             >
               {plan.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#3B82F6] text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#3B82F6] text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap">
                   {plan.highlight}
                 </span>
               )}

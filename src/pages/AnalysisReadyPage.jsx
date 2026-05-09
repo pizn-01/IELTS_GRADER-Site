@@ -27,23 +27,23 @@ const AnalysisReadyPage = () => {
       
       <main className="max-w-[960px] mx-auto px-6 pt-12 pb-20">
         {/* Header Section */}
-        <div className="mb-10 text-left">
-          <h1 className="text-[32px] md:text-[38px] font-bold text-[#1a1f36] leading-[1.3] tracking-tight">
-            Your essay is ready for analysis.<br />
-            Choose your plan to reveal your score.
+        <div className="mb-8 md:mb-10 text-left">
+          <h1 className="text-[28px] sm:text-[32px] md:text-[38px] font-bold text-[#1a1f36] leading-[1.2] md:leading-[1.3] tracking-tight">
+            Your essay is ready for analysis.<br className="hidden md:block" />
+            <span className="md:hidden"> </span>Choose your plan to reveal your score.
           </h1>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Left Column: Free Plan */}
-          <div className="bg-white rounded-[16px] p-8 md:p-10 border border-[#E5E7EB] flex flex-col">
+          <div className="bg-white rounded-[16px] p-6 sm:p-8 md:p-10 border border-[#E5E7EB] flex flex-col">
             <h2 className="text-[24px] font-bold text-[#1a1f36] mb-2">Free Plan</h2>
             <p className="text-[14px] text-[#1a1f36] font-medium mb-8">
               Get your first comprehensive report - No card needed.
             </p>
 
             <form onSubmit={handleSignup} className="space-y-4 flex-1">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[14px] font-medium text-[#1a1f36] mb-2">First Name</label>
                   <input 
@@ -126,7 +126,7 @@ const AnalysisReadyPage = () => {
           </div>
 
           {/* Right Column: Premium Plan */}
-          <div className="bg-white rounded-[12px] p-8 border-[1.5px] border-[#4FA1FF] relative flex flex-col">
+          <div className="bg-white rounded-[12px] p-6 sm:p-8 border-[1.5px] border-[#4FA1FF] relative flex flex-col mt-4 lg:mt-0">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-[22px] font-bold text-[#374151]">Premium Plan</h2>
               <div className="bg-[#D1F0FF] text-[#1e293b] text-[10px] font-semibold px-3 py-1.5 rounded-full">
@@ -152,7 +152,7 @@ const AnalysisReadyPage = () => {
             </div>
 
             {/* Plan Options */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-6">
               {/* Weekly Plan */}
               <div 
                 onClick={() => setSelectedPlan('Weekly')}

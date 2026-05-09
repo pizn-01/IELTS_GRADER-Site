@@ -101,25 +101,25 @@ const ReportPage = () => {
       <div className={`transition-all duration-700 ${isGrading ? 'blur-md pointer-events-none overflow-hidden h-screen' : 'blur-0'}`}>
         <div className="min-h-screen bg-white font-['Inter',_sans-serif]">
           {/* 1. NAVBAR */}
-          <nav className="bg-white border-b border-[#f3f4f6] h-[72px] flex items-center justify-between px-8 sticky top-0 z-50">
-            <div className="flex items-center gap-10">
+          <nav className="bg-white border-b border-[#f3f4f6] md:h-[72px] flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-3 md:py-0 sticky top-0 z-50 gap-4 md:gap-0">
+            <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-10 w-full md:w-auto">
               <span 
                 onClick={() => navigate('/')} 
                 className="text-[19px] font-extrabold text-[#0f172a] tracking-tight cursor-pointer hover:opacity-80 transition-all"
               >
                 IELTSGRADER
               </span>
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-4 sm:gap-8 w-full sm:w-auto justify-center">
                 <button className="text-[13px] text-[#6b7280] hover:text-[#0f172a] transition-colors">Dashboard</button>
                 <div className="relative flex flex-col items-center">
-                  <button className="text-[13px] font-bold text-[#1e2a4a] h-[72px]">Reports</button>
-                  <div className="absolute bottom-0 w-full h-[2px] bg-[#1e2a4a]"></div>
+                  <button className="text-[13px] font-bold text-[#1e2a4a] py-2 md:h-[72px]">Reports</button>
+                  <div className="absolute bottom-0 w-full h-[2px] bg-[#1e2a4a] hidden md:block"></div>
                 </div>
                 <button className="text-[13px] text-[#6b7280] hover:text-[#0f172a] transition-colors">Settings</button>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between w-full md:w-auto gap-3">
               <div className="border border-[#e5e7eb] rounded-full px-3 py-1 flex items-center gap-2.5 bg-transparent">
                 <div className="w-[18px] h-[18px] rounded-full border-[1.5px] border-transparent relative" style={{ 
                   backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, #3b82f6, #14b8a6)', 
@@ -128,27 +128,30 @@ const ReportPage = () => {
                 }}></div>
                 <div>
                   <p className="text-[11px] font-bold text-[#111827] leading-tight">Weekly Sprint</p>
-                  <p className="text-[10px] text-[#6b7280] leading-tight">Credits: 3/5 Remaining</p>
+                  <p className="text-[10px] text-[#6b7280] leading-tight">Credits: 3/5</p>
                 </div>
               </div>
-              <button className="p-1.5 text-[#9ca3af] hover:text-[#111827] transition-colors">
-                <Bell className="w-4 h-4" />
-              </button>
-              <div className="w-8 h-8 bg-[#1e2a4a] rounded-full flex items-center justify-center text-white text-[12px] font-bold">
-                JD
+              <div className="flex items-center gap-3">
+                <button className="p-1.5 text-[#9ca3af] hover:text-[#111827] transition-colors">
+                  <Bell className="w-4 h-4" />
+                </button>
+                <div className="w-8 h-8 bg-[#1e2a4a] rounded-full flex items-center justify-center text-white text-[12px] font-bold">
+                  JD
+                </div>
               </div>
             </div>
           </nav>
 
           {/* 2. VERIFICATION BANNER */}
-          <div className="w-full bg-[#fef3e2] py-2.5 px-6 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <AlertCircle className="w-[15px] h-[15px] text-[#f59e0b]" />
-              <p className="text-[12px] text-[#6b7280] font-normal">
-                We've sent a verification link to your email. Please verify to secure your account and continue using the app.
+          {/* 2. VERIFICATION BANNER */}
+          <div className="w-full bg-[#fef3e2] py-2.5 px-4 md:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
+            <div className="flex items-start sm:items-center gap-2">
+              <AlertCircle className="w-[15px] h-[15px] text-[#f59e0b] shrink-0 mt-0.5 sm:mt-0" />
+              <p className="text-[12px] text-[#6b7280] font-normal leading-snug">
+                We've sent a verification link to your email. Please verify to secure your account.
               </p>
             </div>
-            <button className="bg-white border border-[#d1d5db] rounded-[6px] px-4 py-1.5 text-[12px] font-medium text-[#111827] hover:bg-gray-50 transition-all whitespace-nowrap">
+            <button className="bg-white border border-[#d1d5db] rounded-[6px] px-4 py-1.5 text-[12px] font-medium text-[#111827] hover:bg-gray-50 transition-all whitespace-nowrap self-end sm:self-auto">
               Resend Email
             </button>
           </div>
@@ -158,22 +161,22 @@ const ReportPage = () => {
             className="w-full" 
             style={{ background: 'linear-gradient(135deg, #fce4ec 0%, #f8bbd9 20%, #e8d5f5 50%, #dbeafe 80%, #e0f2fe 100%)' }}
           >
-            <div className="max-w-[1200px] mx-auto px-8 py-[18px] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <button onClick={() => navigate(-1)} className="w-[26px] h-[26px] border-[1.5px] border-[#374151] rounded-full flex items-center justify-center text-[#374151] hover:bg-white/20 transition-all">
+            <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-[18px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+              <div className="flex items-start sm:items-center gap-3">
+                <button onClick={() => navigate(-1)} className="w-[26px] h-[26px] border-[1.5px] border-[#374151] rounded-full flex items-center justify-center text-[#374151] hover:bg-white/20 transition-all mt-1 sm:mt-0 shrink-0">
                   <ChevronLeft className="w-3.5 h-3.5" strokeWidth={3} />
                 </button>
                 <div>
-                  <h1 className="text-[18px] font-bold text-[#111827]">Task 2- Academic . Mar 23, 2026</h1>
+                  <h1 className="text-[16px] md:text-[18px] font-bold text-[#111827] leading-snug">Task 2 - Academic . Mar 23, 2026</h1>
                   <p className="text-[13px] text-[#6b7280]">Overall Band Score <span className="text-[#111827] font-bold">7.0</span></p>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5">
-                <button className="bg-white border border-[#d1d5db] rounded-[8px] px-4 py-1.5 text-[13px] text-[#374151] hover:bg-gray-50 transition-all font-medium">
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                <button className="flex-1 sm:flex-none bg-white border border-[#d1d5db] rounded-[8px] px-4 py-1.5 text-[13px] text-[#374151] hover:bg-gray-50 transition-all font-medium">
                   View Exam
                 </button>
-                <button className="bg-[#1e2a4a] text-white rounded-[8px] px-4 py-1.5 text-[13px] font-bold hover:opacity-90 transition-all">
-                  Export Report
+                <button className="flex-1 sm:flex-none bg-[#1e2a4a] text-white rounded-[8px] px-4 py-1.5 text-[13px] font-bold hover:opacity-90 transition-all">
+                  Export
                 </button>
               </div>
             </div>
@@ -202,65 +205,69 @@ const ReportPage = () => {
             </div>
           </div>
 
-          <main className="max-w-[1200px] mx-auto px-8 pt-6 pb-16 space-y-5">
+          <main className="max-w-[1200px] mx-auto px-4 md:px-8 pt-6 pb-16 space-y-5">
             {/* CRITERIA BREAKDOWN */}
             <div className="bg-white border border-[#e5e7eb] rounded-[12px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
-              <div className="px-8 py-5 border-b border-[#f3f4f6]">
+              <div className="px-5 md:px-8 py-4 md:py-5 border-b border-[#f3f4f6]">
                 <h2 className="text-[15px] font-bold text-[#111827]">Criteria Breakdown</h2>
               </div>
-              <div className="px-8 py-8 flex items-center">
-                {/* Donut Chart - Left */}
-                <div className="flex flex-col items-center shrink-0 mr-16">
-                  <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-3">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie data={donutData} innerRadius={42} outerRadius={56} startAngle={90} endAngle={-270} dataKey="value" stroke="none">
-                          <Cell fill="#3b82f6" cornerRadius={10} />
-                          <Cell fill="#eff6ff" />
-                        </Pie>
-                      </PieChart>
-                    </ResponsiveContainer>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-[30px] font-bold text-[#3B82F6]">6.5</span>
-                    </div>
-                  </div>
-                  <span className="text-[12px] font-medium text-[#374151]">Overall Band Score</span>
-                </div>
-
-                {/* Criteria Names - Center */}
-                <div className="space-y-6 shrink-0 ml-auto mr-auto">
-                  {criteriaData.map((item, i) => (
-                    <div key={i} className="h-[10px] flex items-center">
-                      <span className="text-[13px] text-[#111827] font-medium">{item.name}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Scores + Bars - Right */}
-                <div className="ml-auto flex flex-col space-y-6">
-                  {criteriaData.map((item, i) => (
-                    <div key={i} className="flex items-center h-[10px]">
-                      <span className="text-[13px] font-semibold text-[#64748B] w-[36px] text-right shrink-0 mr-5">{item.value.toFixed(1)}</span>
-                      <div className="w-[260px] h-[10px] bg-[#e5e7eb] rounded-full overflow-hidden">
-                        <div 
-                          className="h-full rounded-full transition-all duration-1000" 
-                          style={{ width: `${(item.value / 9) * 100}%`, backgroundColor: item.color }} 
-                        />
+              <div className="w-full overflow-x-auto custom-scrollbar">
+                <div className="px-5 md:px-8 py-6 md:py-8 flex flex-col md:flex-row items-center min-w-[300px] md:min-w-[700px]">
+                  {/* Donut Chart - Left */}
+                  <div className="flex flex-col items-center shrink-0 mb-8 md:mb-0 md:mr-10 lg:mr-16">
+                    <div className="relative w-[120px] h-[120px] flex items-center justify-center mb-3">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie data={donutData} innerRadius={42} outerRadius={56} startAngle={90} endAngle={-270} dataKey="value" stroke="none">
+                            <Cell fill="#3b82f6" cornerRadius={10} />
+                            <Cell fill="#eff6ff" />
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-[30px] font-bold text-[#3B82F6]">6.5</span>
                       </div>
                     </div>
-                  ))}
+                    <span className="text-[12px] font-medium text-[#374151]">Overall Band Score</span>
+                  </div>
+
+                  <div className="w-full md:w-auto flex flex-1">
+                    {/* Criteria Names - Center */}
+                    <div className="space-y-6 shrink-0 mr-4 md:mr-auto">
+                      {criteriaData.map((item, i) => (
+                        <div key={i} className="h-[10px] flex items-center">
+                          <span className="text-[12px] md:text-[13px] text-[#111827] font-medium">{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Scores + Bars - Right */}
+                    <div className="ml-auto flex flex-col space-y-6 shrink-0">
+                      {criteriaData.map((item, i) => (
+                        <div key={i} className="flex items-center h-[10px]">
+                          <span className="text-[13px] font-semibold text-[#64748B] w-[30px] md:w-[36px] text-right shrink-0 mr-3 md:mr-5">{item.value.toFixed(1)}</span>
+                          <div className="w-[100px] sm:w-[150px] md:w-[260px] h-[10px] bg-[#e5e7eb] rounded-full overflow-hidden">
+                            <div 
+                              className="h-full rounded-full transition-all duration-1000" 
+                              style={{ width: `${(item.value / 9) * 100}%`, backgroundColor: item.color }} 
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* SCORING DETAILS */}
             <div className="bg-white border border-[#e5e7eb] rounded-[12px] shadow-[0_1px_2px_rgba(0,0,0,0.04)] overflow-hidden">
-              <div className="px-8 py-5">
+              <div className="px-5 md:px-8 py-5">
                 <h2 className="text-[15px] font-bold text-[#101828]">Scoring Details</h2>
-                <p className="text-[12px] text-[#9ca3af] mt-0.5">Base, seiling, and penalty breakdown</p>
+                <p className="text-[12px] text-[#9ca3af] mt-0.5">Base, ceiling, and penalty breakdown</p>
               </div>
-              <div className="px-8 pb-6">
-                <div className="border border-[#f3f4f6] rounded-[10px] overflow-hidden">
+              <div className="px-5 md:px-8 pb-6">
+                <div className="border border-[#f3f4f6] rounded-[10px] overflow-x-auto custom-scrollbar">
                   <table className="w-full">
                     <thead>
                       <tr className="bg-[#fafafa]">

@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 
 const AuthLayout = ({ children, noBox }) => {
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: '#FFFFFF',
-      fontFamily: '"Plus Jakarta Sans", sans-serif'
-    }}>
+    <div className="min-h-screen flex flex-col bg-white font-['Plus_Jakarta_Sans',_sans-serif]">
       {/* Global styles for fine-tuning */}
       <style dangerouslySetInnerHTML={{ __html: `
+        input {
+          appearance: none;
+          -webkit-appearance: none;
+          border-radius: 8px;
+        }
         input::placeholder {
           color: #9CA3AF !important;
           opacity: 1;
@@ -32,68 +31,29 @@ const AuthLayout = ({ children, noBox }) => {
       ` }} />
 
       {/* Navbar */}
-      <nav style={{
-        height: '56px',
-        backgroundColor: '#FFFFFF',
-        borderBottom: '1px solid #E5E7EB',
-        padding: '0 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
-      }}>
-        <Link to="/" style={{
-          fontSize: '16px',
-          fontWeight: 700,
-          color: '#1a1f36',
-          textTransform: 'uppercase',
-          letterSpacing: '-0.02em',
-          textDecoration: 'none'
-        }}>
+      <nav className="h-[56px] bg-white border-b border-[#E5E7EB] px-4 sm:px-10 flex justify-between items-center sticky top-0 z-[100]">
+        <Link to="/" className="text-[16px] font-bold text-[#1a1f36] uppercase tracking-[-0.02em] no-underline">
           IELTSGRADER
         </Link>
-        <a href="#" style={{
-          fontSize: '14px',
-          fontWeight: 400,
-          color: '#374151',
-          textDecoration: 'none'
-        }}>
+        <a href="#" className="text-[14px] font-normal text-[#374151] no-underline">
           Need Help?
         </a>
       </nav>
 
       {/* Main Content */}
-      <main style={{
-        flex: 1,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: noBox ? 'flex-start' : 'center',
-        padding: noBox ? '80px 20px 60px' : '60px 20px',
-        backgroundColor: '#FFFFFF'
-      }}>
-        <div style={{
-          width: '100%',
-          maxWidth: noBox ? '520px' : '480px',
-          backgroundColor: '#FFFFFF',
-          padding: noBox ? '0' : '48px',
-          borderRadius: noBox ? '0' : '20px',
-          boxShadow: noBox ? 'none' : '0 4px 20px rgba(0, 0, 0, 0.03), 0 10px 40px rgba(0, 0, 0, 0.04)',
-          border: noBox ? 'none' : '1px solid #E5E7EB'
-        }}>
+      <main className={`flex-1 flex justify-center bg-white ${noBox ? 'items-start pt-10 sm:pt-20 px-4 sm:px-5 pb-10 sm:pb-16' : 'items-center py-10 sm:py-16 px-4 sm:px-5'}`}>
+        <div className={`w-full bg-white ${
+          noBox 
+            ? 'max-w-[520px]' 
+            : 'max-w-[480px] p-6 sm:p-12 rounded-[16px] sm:rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.03),0_10px_40px_rgba(0,0,0,0.04)] border border-[#E5E7EB]'
+        }`}>
           {children}
         </div>
       </main>
 
       {/* Footer */}
-      <footer style={{
-        padding: '20px',
-        textAlign: 'center',
-        fontSize: '13px',
-        color: '#9CA3AF'
-      }}>
-        Copyright @IELTSGRADER 2025 | <a href="#" style={{ color: '#9CA3AF', textDecoration: 'none' }}>Privacy Policy</a>
+      <footer className="p-5 text-center text-[13px] text-[#9CA3AF]">
+        Copyright @IELTSGRADER 2025 | <a href="#" className="text-[#9CA3AF] no-underline">Privacy Policy</a>
       </footer>
     </div>
   );
