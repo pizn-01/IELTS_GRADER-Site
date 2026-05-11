@@ -36,7 +36,7 @@ const Hero = () => {
   const isUploadFormValid = essayData.examType && essayData.taskType && files.essay;
 
   return (
-    <header className="bg-[#1A96F30D] relative min-h-[700px] overflow-hidden flex items-center">
+    <header id="about" className="bg-[#1A96F30D] relative min-h-[700px] overflow-hidden flex items-center">
       <div className="max-w-[1280px] mx-auto px-10 lg:px-16 py-12 lg:py-20 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
         {/* Left Column - Hero Content */}
