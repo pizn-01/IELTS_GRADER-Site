@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useGrade } from '../context/GradeContext';
+import { useLenis } from '@studio-freight/react-lenis';
 import { Coins, User, Shield, CreditCard, HelpCircle, LogOut } from 'lucide-react';
 
 const Navbar = ({ showCredits }) => {
@@ -8,6 +9,9 @@ const Navbar = ({ showCredits }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const lenis = useLenis();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -24,6 +28,27 @@ const Navbar = ({ showCredits }) => {
     setUserStatus(prev => ({ ...prev, isLoggedIn: false }));
     setIsProfileOpen(false);
     setIsMobileMenuOpen(false);
+  };
+
+  const handleNavClick = (e, link) => {
+    const targetId = link.toLowerCase().replace(/\s+/g, '-');
+    const isHomePage = location.pathname === '/';
+
+    if (isHomePage) {
+      e.preventDefault();
+      const element = document.getElementById(targetId);
+      if (element) {
+        lenis?.scrollTo(`#${targetId}`, {
+          offset: -80,
+          duration: 1.5,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      }
+    } else {
+      // If not on home page, navigate to home with hash
+      // The scroll will be handled by the hash on mount
+      setIsMobileMenuOpen(false);
+    }
   };
 
   const navLinks = ['About', 'How it works', 'Sample Report', 'FAQS', 'Contact'];
@@ -44,12 +69,13 @@ const Navbar = ({ showCredits }) => {
           <ul className="hidden md:flex items-center gap-7 list-none m-0 p-0">
             {navLinks.map((link) => (
               <li key={link}>
-                <a
-                  href={`/#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                <Link
+                  to={`/#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                  onClick={(e) => handleNavClick(e, link)}
                   className="text-[14px] font-semibold text-[#4B5563] no-underline hover:text-[#1a1f36] transition-colors"
                 >
                   {link}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -170,14 +196,14 @@ const Navbar = ({ showCredits }) => {
         <div className="md:hidden absolute top-[64px] left-0 w-full bg-white border-b border-[#E5E7EB] shadow-lg animate-in slide-in-from-top-2">
           <div className="px-4 py-4 flex flex-col gap-2">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link}
-                href={`/#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                to={`/#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                onClick={(e) => handleNavClick(e, link)}
                 className="text-[15px] font-semibold text-[#4B5563] py-3 px-2 rounded-lg hover:bg-[#F9FAFB] hover:text-[#1a1f36] transition-colors"
               >
                 {link}
-              </a>
+              </Link>
             ))}
             
             {showCredits && (

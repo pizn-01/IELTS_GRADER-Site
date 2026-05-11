@@ -1,6 +1,6 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { ReactLenis } from '@studio-freight/react-lenis';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
@@ -51,6 +51,27 @@ const LandingPage = () => (
 );
 
 function App() {
+  const location = useLocation();
+  const lenis = useLenis();
+
+  useEffect(() => {
+    if (location.hash) {
+      // Small delay to ensure content is rendered
+      const timeout = setTimeout(() => {
+        const targetId = location.hash;
+        const element = document.querySelector(targetId);
+        if (element) {
+          lenis?.scrollTo(targetId, { 
+            offset: -80,
+            immediate: false,
+            duration: 1.5
+          });
+        }
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [location.hash, lenis]);
+
   return (
     <GradeProvider>
       <ReactLenis root options={{ 
